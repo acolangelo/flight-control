@@ -31,7 +31,7 @@ I’ve been in the thick of my [Big Cartel Employee Art Grant](https://www.bigca
 **[Part 3: Demo Flight](https://acolangelo.com/blog/demo-flight)
 <small>— OCTOBER 27, 2016</small>**
 
-<iframe src="https://player.vimeo.com/video/189040288?color=66a3c6&amp;title=0&amp;byline=0&amp;portrait=0" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+![](https://i.vimeocdn.com/video/599235494.jpg?mw=1920&mh=1080&q=70)
 
 After [putting together a component test unit](https://acolangelo.com/blog/component-tests), I hooked it up to a [Teensy++ 2.0](https://www.pjrc.com/store/teensypp.html)—the brains of the controller—and took it for a spin in X-Plane.
 
