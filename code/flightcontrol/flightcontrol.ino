@@ -1,20 +1,20 @@
-int buttonPins[]    = {0,   2,  3};
-int buttonButtons[] = {11,  14, 15};
+int buttonPins[]    = {0,   2,  3,  25};
+int buttonButtons[] = {11,  14, 15, 16};
 
-int togglePins[]    = {27,  1};
-int toggleButtons[] = {13,  12};
-int toggleStates[]  = {0,   0};
+int togglePins[]    = {27,  1,  24, 23};
+int toggleButtons[] = {13,  12, 17, 18};
+int toggleStates[]  = {0,   0,  0,  0};
 
-void setup() {
+void setup() {  
   // Assign button pins to INPUT_PULLUP
   int i;
-  for (i = 0; i < 3; i = i + 1) {
+  for (i = 0; i < 4; i = i + 1) {
     pinMode(buttonPins[i], INPUT_PULLUP);
   }
   
   // Assign toggle pins to INPUT
   int j;
-  for (j = 0; j < 2; j = j + 1) {
+  for (j = 0; j < 4; j = j + 1) {
     // Control Mode needs resistor enabled.
     if (togglePins[j] == 27) {
       pinMode(togglePins[j], INPUT_PULLUP);
@@ -25,21 +25,16 @@ void setup() {
 }
 
 void loop() {
-  // Read Sync control and return if not enabled.
-  // if (!digitalRead(11)) {
-  //   delay(50);
-  //   return;
-  // }
   
   // Read buttons
   int i;
-  for (i = 0; i < 3; i = i + 1) {
+  for (i = 0; i < 4; i = i + 1) {
     Joystick.button(buttonButtons[i], !digitalRead(buttonPins[i]));
   }
   
   // Read toggle switches
   int j;
-  for (j = 0; j < 2; j = j + 1) {
+  for (j = 0; j < 4; j = j + 1) {
     int currentState = digitalRead(togglePins[j]);
     if (toggleButtons[j] == 12) {
       if (currentState == toggleStates[j]) {
@@ -48,7 +43,7 @@ void loop() {
       // Staging Lock
       Keyboard.begin();
       Keyboard.press(KEY_LEFT_ALT);
-      delay(10);
+      delay(1);
       Keyboard.press('l');
       delay(1);
       Keyboard.release('l');
@@ -74,6 +69,7 @@ void loop() {
       }
       Keyboard.end();
     } else {
+//      if ¬
       Joystick.button(toggleButtons[j], (currentState != toggleStates[j]));
     }
     toggleStates[j] = currentState;
@@ -99,6 +95,6 @@ void loop() {
   }
   Joystick.sliderLeft(throttleAmount);
   
-  delay(10);
+  delay(5);
 }
 
