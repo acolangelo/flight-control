@@ -1,5 +1,5 @@
-int buttonPins[]    = {0,   2,  3,  25};
-int buttonButtons[] = {11,  14, 15, 16};
+int buttonPins[]    = {0,   2,  3,  25, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8};
+int buttonButtons[] = {11,  14, 15, 16, 1,  2,  3,  4,  5,  6,  7,  8,  9, 10};
 
 int togglePins[]    = {27,  1,  24, 23};
 int toggleButtons[] = {13,  12, 17, 18};
@@ -8,7 +8,7 @@ int toggleStates[]  = {0,   0,  0,  0};
 void setup() {  
   // Assign button pins to INPUT_PULLUP
   int i;
-  for (i = 0; i < 4; i = i + 1) {
+  for (i = 0; i < 14; i = i + 1) {
     pinMode(buttonPins[i], INPUT_PULLUP);
   }
   
@@ -28,7 +28,7 @@ void loop() {
   
   // Read buttons
   int i;
-  for (i = 0; i < 4; i = i + 1) {
+  for (i = 0; i < 14; i = i + 1) {
     Joystick.button(buttonButtons[i], !digitalRead(buttonPins[i]));
   }
   
@@ -70,7 +70,8 @@ void loop() {
       Keyboard.end();
     } else {
 //      if ¬
-      Joystick.button(toggleButtons[j], (currentState != toggleStates[j]));
+      //Joystick.button(toggleButtons[j], (currentState != toggleStates[j]));
+      Joystick.button(toggleButtons[j], currentState);
     }
     toggleStates[j] = currentState;
   }
